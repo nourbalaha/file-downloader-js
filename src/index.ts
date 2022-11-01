@@ -1,10 +1,10 @@
 function download(data: any, filename: string, mime: string, bom: Uint8Array) {
-  var blobParts: BlobPart[] = typeof bom !== 'undefined' ? [bom, data] : [data];
-  var blobOptions: BlobPropertyBag = { type: mime || "" }
-  var blob: Blob = new Blob(blobParts, blobOptions);
-  var url: string = (window.URL && window.URL.createObjectURL) ? window.URL.createObjectURL(blob) : window.webkitURL.createObjectURL(blob);
+  const blobParts: BlobPart[] = typeof bom !== 'undefined' ? [bom, data] : [data];
+  const blobOptions: BlobPropertyBag = { type: mime || "" }
+  const blob: Blob = new Blob(blobParts, blobOptions);
+  const url: string = (window.URL && window.URL.createObjectURL) ? window.URL.createObjectURL(blob) : window.webkitURL.createObjectURL(blob);
 
-  var anchor: HTMLAnchorElement = document.createElement('a');
+  const anchor: HTMLAnchorElement = document.createElement('a');
   anchor.style.display = 'none';
   anchor.href = url;
   anchor.setAttribute('download', filename);
