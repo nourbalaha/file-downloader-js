@@ -1,4 +1,4 @@
-function download(data: any, filename: string, mime: string, bom: Uint8Array) {
+const download = (data: any, filename: string, mime: string, bom: Uint8Array) => {
   const blobParts: BlobPart[] = typeof bom !== 'undefined' ? [bom, data] : [data];
   const blobOptions: BlobPropertyBag = { type: mime || "" }
   const blob: Blob = new Blob(blobParts, blobOptions);
@@ -16,12 +16,10 @@ function download(data: any, filename: string, mime: string, bom: Uint8Array) {
   document.body.appendChild(anchor);
   anchor.click();
 
-  setTimeout(function () {
+  setTimeout(() => {
     document.body.removeChild(anchor);
     window.URL.revokeObjectURL(url);
   }, 200)
 }
 
-if (typeof module !== 'undefined') {
-  module.exports = download;
-}
+export default download
