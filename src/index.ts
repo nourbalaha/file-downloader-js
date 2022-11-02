@@ -1,11 +1,13 @@
+import { Blob } from 'buffer';
+import { BinaryLike } from 'crypto';
+
 const download = (data: any, filename: string, mime: string, bom: Uint8Array) => {
-  const blobParts: BlobPart[] = typeof bom !== "undefined" ? [bom, data] : [data];
-  const blobOptions: BlobPropertyBag = { type: mime || "" };
-  const blob: Blob = new Blob(blobParts, blobOptions);
-  const url: string =
-    window.URL && window.URL.createObjectURL
-      ? window.URL.createObjectURL(blob)
-      : window.webkitURL.createObjectURL(blob);
+  const sources: (Blob | BinaryLike)[] = typeof bom !== "undefined" ? [bom, data] : [data];
+  const options: BlobPropertyBag = { type: mime || "" };
+  const blob: Blob = new Blob(sources, options);
+  const url = window.URL && window.URL.createObjectURL
+    ? window.URL.createObjectURL(blob)
+    : window.webkitURL.createObjectURL(blob);
 
   const anchor: HTMLAnchorElement = document.createElement("a");
   anchor.style.display = "none";
@@ -22,7 +24,7 @@ const download = (data: any, filename: string, mime: string, bom: Uint8Array) =>
   setTimeout(() => {
     document.body.removeChild(anchor);
     window.URL.revokeObjectURL(url);
-  }, 200);
+  }, 100);
 };
 
 export default download;
