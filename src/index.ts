@@ -1,13 +1,14 @@
-import { Blob } from 'buffer';
-import { BinaryLike } from 'crypto';
+import { Blob } from "buffer";
+import { BinaryLike } from "crypto";
 
 const download = (data: any, filename: string, mime?: string, bom?: Uint8Array) => {
   const sources: (Blob | BinaryLike)[] = typeof bom !== "undefined" ? [bom, data] : [data];
   const options: BlobPropertyBag = { type: mime || "application/octet-stream" };
   const blob: Blob = new Blob(sources, options);
-  const url = window.URL && window.URL.createObjectURL
-    ? window.URL.createObjectURL(blob)
-    : window.webkitURL.createObjectURL(blob);
+  const url =
+    window.URL && window.URL.createObjectURL
+      ? window.URL.createObjectURL(blob)
+      : window.webkitURL.createObjectURL(blob);
 
   const anchor: HTMLAnchorElement = document.createElement("a");
   anchor.style.display = "none";
