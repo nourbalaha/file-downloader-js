@@ -8,15 +8,21 @@
 File Downloader JS is a simple package that allows you to download a file from the browser.
 ---
 
-### Installing with npm package manager
+### Install with npm:
 
-```js
+```sh
 npm install file-downloader-js --save
+```
+
+### Install with yarn:
+
+```sh
+yarn add file-downloader-js
 ```
 
 ### Basic usage
 
-#### Using fetch
+#### Binary download using fetch:
 ```js
 import fileDownloader from "file-downloader-js";
 
@@ -29,20 +35,33 @@ function download(url: string, filename: string) {
 }
 ```
 
-
-#### Using axios
+#### Binary download using axios:
 ```js
 import fileDownloader from "file-downloader-js";
 import Axios from "axios";
 
-  function download(url: string, filename: string) {
-    Axios.get(url, {
-      responseType: "blob"
-    }).then((res) => {
-      fileDownloader(res.data, filename);
-    }
+function download(url: string, filename: string) {
+  Axios.get(url, {
+    responseType: "blob"
+  }).then((res) => {
+    fileDownloader(res.data, filename);
+  }
+}
 ```
 
----
-## Please remember to star this github repo if you like it. Thank you!
----
+#### CSV Data download example:
+```js
+import fileDownloader from "file-downloader-js";
+    
+let dataRecords = [
+  ["ID", "Name", "Age"],
+  [1, "Nour", 34],
+  [2, "Mila", 1]
+];
+let data = dataRecords.map((record) => record.join(",")).join("\r\n");
+let bom = new Uint8Array([0xef, 0xbb, 0xbf]);
+let mime = "text/csv";
+let filename = "data.csv";
+
+fileDownloader(data, filename, mime, bom);
+```
