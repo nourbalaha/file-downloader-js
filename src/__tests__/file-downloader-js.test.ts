@@ -2,14 +2,15 @@ import fileDownloader from "../index";
 
 test("mock test", () => {
   window.URL.createObjectURL = jest.fn();
-  let records = [
+  const records = [
     ["ID", "Name", "Price"],
     [1, "Orange", 300],
     [2, "Apple", 2000],
   ];
-  let data = records.map((record) => record.join(",")).join("\r\n");
-  let bom = new Uint8Array([0xef, 0xbb, 0xbf]);
-  let mime = "text/csv";
+  const data = records.map((record) => record.join(",")).join("\r\n");
+  const filename = "data.ccsv"
+  const mime = "text/csv";
+  const bom = new Uint8Array([0xef, 0xbb, 0xbf]);
 
-  expect(fileDownloader(data, "data.ccsv", mime, bom)).toBeUndefined;
+  expect(fileDownloader(data, filename, mime, bom)).toBeUndefined;
 });
