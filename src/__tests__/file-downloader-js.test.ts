@@ -8,7 +8,7 @@ test("mock test", () => {
     [2, "Apple", 2000],
   ];
   const data = records.map((record) => record.join(",")).join("\r\n");
-  const filename = "data.ccsv"
+  const filename = "data.ccsv";
   const mime = "text/csv";
   const bom = new Uint8Array([0xef, 0xbb, 0xbf]);
 
