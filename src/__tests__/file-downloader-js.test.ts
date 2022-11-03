@@ -1,6 +1,5 @@
-import download from "../index";
+import fileDownloader from "../index";
 
-// TODO: write unit tests
 test("mock test", () => {
   window.URL.createObjectURL = jest.fn();
   let records = [
@@ -12,5 +11,5 @@ test("mock test", () => {
   let bom = new Uint8Array([0xef, 0xbb, 0xbf]);
   let mime = "text/csv";
 
-  expect(download(data, "data.ccsv", mime, bom)).toBeUndefined;
+  expect(fileDownloader(data, "data.ccsv", mime, bom)).toBeUndefined;
 });
