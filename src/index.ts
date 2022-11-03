@@ -1,7 +1,7 @@
 import { Blob } from "buffer";
 import { BinaryLike } from "crypto";
 
-const download = (data: any, filename: string, mime?: string, bom?: Uint8Array) => {
+const fileDownloader = (data: any, filename: string, mime?: string, bom?: Uint8Array) => {
   const sources: (Blob | BinaryLike)[] = typeof bom !== "undefined" ? [bom, data] : [data];
   const options: BlobPropertyBag = { type: mime || "application/octet-stream" };
   const blob: Blob = new Blob(sources, options);
@@ -28,4 +28,4 @@ const download = (data: any, filename: string, mime?: string, bom?: Uint8Array) 
   }, 100);
 };
 
-export default download;
+export default fileDownloader;

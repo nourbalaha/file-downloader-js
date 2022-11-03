@@ -59,9 +59,9 @@ let dataRecords = [
   [2, "Mila", 1]
 ];
 let data = dataRecords.map((record) => record.join(",")).join("\r\n");
-let bom = new Uint8Array([0xef, 0xbb, 0xbf]);
-let mime = "text/csv";
 let filename = "data.csv";
+let mime = "text/csv";
+let bom = new Uint8Array([0xef, 0xbb, 0xbf]);
 
 fileDownloader(data, filename, mime, bom);
 ```

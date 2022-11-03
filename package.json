@@ -1,7 +1,7 @@
 {
   "name": "file-downloader-js",
   "version": "0.0.5",
-  "description": "npm package to download files using javascript",
+  "description": "File Downloader JS is a simple package that allows you to download a file from the browser.",
   "main": "src/index.ts",
   "scripts": {
     "test": "jest --config jestconfig.json",
@@ -31,7 +31,7 @@
     "file-download"
   ],
   "author": "Nour Balaha",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nourbalaha/file-download-js/issues"
   },
