@@ -1,6 +1,11 @@
+<div align="center">
+  <h1> File Downloader JS</h1>
+</div>
+
 <p align="center">
-  <a href="https://www.npmjs.com/package/file-downloader-js"><img src="https://img.shields.io/npm/v/file-downloader-js.svg" alt="Version"></a>
-  <a href="https://www.npmjs.com/package/file-downloader-js"><img src="https://img.shields.io/npm/l/file-downloader-js.svg" alt="License"></a>
+  <a href="https://www.npmjs.com/package/file-downloader-js"><img src="https://img.shields.io/npm/v/file-downloader-js.svg" alt="version"></a>
+  <a href="https://www.npmjs.com/package/file-downloader-js"><img src="https://img.shields.io/npm/l/file-downloader-js.svg" alt="license"></a>
+  <a href="https://www.npmjs.com/package/file-downloader-js"><img src="https://img.shields.io/npm/dw/file-downloader-js" alt="downloads" ></a>
 </p>
 
 ## Introduction
