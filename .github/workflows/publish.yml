@@ -29,8 +29,8 @@ jobs:
       # Configure Git
       - name: Git configuration
         run: |
-          git config --global user.email ${{ secrets.USER_NAME }}
-          git config --global user.name ${{ secrets.USER_EMAIL }}
+          git config --global user.email ${{ secrets.USER_EMAIL }}
+          git config --global user.name ${{ secrets.USER_NAME }}
 
       # Bump package version
       - name: Bump release version
