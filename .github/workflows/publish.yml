@@ -9,15 +9,15 @@ jobs:
     steps:
       # Checkout project repository
       - name: Checkout
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
       # Setup Node.js environment
       - name: Setup Node.js
-      - uses: actions/setup-node@v3
+        uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
-          registry-url: 'https://registry.npmjs.org'
-      
+          node-version: "16.x"
+          registry-url: "https://registry.npmjs.org"
+
       # Install dependencies (required by Run tests step)
       - name: Install dependencies
         run: npm ci
@@ -34,12 +34,10 @@ jobs:
 
       # Bump package version
       - name: Bump release version
-      - run: npm version patch -m "new release v%s"
+        run: npm version patch -m "new release v%s"
 
       # Publish version to public repository
       - name: Publish
-      - run: npm publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
-
-
