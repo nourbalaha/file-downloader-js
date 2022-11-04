@@ -35,9 +35,8 @@ jobs:
       # Bump package version
       - name: Bump release version
         run: |
-          echo "NEW_VERSION=$(npm --no-git-tag-version version $RELEASE_TYPE)" >> $GITHUB_ENV
-        env:
-          RELEASE_TYPE: ${{ github.event.inputs.release-type }}
+          echo "NEW_VERSION=$(npm --no-git-tag-version version)" >> $GITHUB_ENV
+          npm version patch -m "new release v%s"
 
       # Update changelog unreleased section with new version
       - name: Update changelog
