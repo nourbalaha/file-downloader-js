@@ -1,6 +1,6 @@
 {
   "name": "file-downloader-js",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "File Downloader JS is a simple package that allows you to download a file from the browser.",
   "main": "src/index.ts",
   "scripts": {
