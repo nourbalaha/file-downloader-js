@@ -34,12 +34,13 @@ jobs:
         run: |
           git config --global user.email ${{ secrets.USER_EMAIL }}
           git config --global user.name ${{ secrets.USER_NAME }}
+          
       # Bump package version
       - name: Bump release version
         run: npm version ${{ github.event.inputs.release-type }} -m "new release v%s"
 
       # Publish version to public repository
       - name: Publish
-        run: npm publish --tag latest
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
