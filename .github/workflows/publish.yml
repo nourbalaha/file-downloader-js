@@ -33,22 +33,9 @@ jobs:
           git config --global user.name ${{ secrets.USER_NAME }}
 
       # Bump package version
-      # Use tag latest
       - name: Bump release version
-        if: startsWith(github.event.inputs.release-type, 'pre') != true
         run: |
           echo "NEW_VERSION=$(npm --no-git-tag-version version $RELEASE_TYPE)" >> $GITHUB_ENV
-          echo "RELEASE_TAG=latest" >> $GITHUB_ENV
-        env:
-          RELEASE_TYPE: ${{ github.event.inputs.release-type }}
-
-      # Bump package pre-release version
-      # Use tag beta for pre-release versions
-      - name: Bump pre-release version
-        if: startsWith(github.event.inputs.release-type, 'pre')
-        run: |
-          echo "NEW_VERSION=$(npm --no-git-tag-version --preid=beta version $RELEASE_TYPE
-          echo "RELEASE_TAG=beta" >> $GITHUB_ENV
         env:
           RELEASE_TYPE: ${{ github.event.inputs.release-type }}
 
@@ -70,7 +57,7 @@ jobs:
 
       # Publish version to public repository
       - name: Publish
-        run: npm publish --verbose --access public --tag ${{ env.RELEASE_TAG }}
+        run: npm publish --verbose --access public --tag latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
 
