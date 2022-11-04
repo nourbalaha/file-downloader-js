@@ -1,20 +1,24 @@
+<div align="center">
+  <h1> File Downloader JS</h1>
+</div>
+
 <p align="center">
-  <a href="https://www.npmjs.com/package/file-downloader-js"><img src="https://img.shields.io/npm/v/file-downloader-js.svg" alt="Version"></a>
-  <a href="https://www.npmjs.com/package/file-downloader-js"><img src="https://img.shields.io/npm/l/file-downloader-js.svg" alt="License"></a>
+  <a href="https://www.npmjs.com/package/file-downloader-js"><img src="https://img.shields.io/npm/v/file-downloader-js.svg" alt="version"></a>
+  <a href="https://www.npmjs.com/package/file-downloader-js"><img src="https://img.shields.io/npm/l/file-downloader-js.svg" alt="license"></a>
+  <a href="https://www.npmjs.com/package/file-downloader-js"><img src="https://img.shields.io/npm/dw/file-downloader-js" alt="downloads" ></a>
 </p>
 
 ## Introduction
 
-File Downloader JS is a simple package that allows you to download a file from the browser.
----
+File Downloader JS is a simple package that allows you to download a file from the browser
 
-### Install with npm:
+### Install with npm
 
 ```sh
 npm install file-downloader-js --save
 ```
 
-### Install with yarn:
+### Install with yarn
 
 ```sh
 yarn add file-downloader-js
@@ -22,7 +26,8 @@ yarn add file-downloader-js
 
 ### Basic usage
 
-#### Binary download using fetch:
+#### Binary download using fetch
+
 ```js
 import fileDownloader from "file-downloader-js";
 
@@ -35,7 +40,8 @@ function download(url: string, filename: string) {
 }
 ```
 
-#### Binary download using axios:
+#### Binary download using axios
+
 ```js
 import fileDownloader from "file-downloader-js";
 import Axios from "axios";
@@ -49,7 +55,8 @@ function download(url: string, filename: string) {
 }
 ```
 
-#### CSV Data download example:
+#### CSV Data download example
+
 ```js
 import fileDownloader from "file-downloader-js";
     
