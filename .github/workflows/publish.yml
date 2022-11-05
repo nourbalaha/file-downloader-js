@@ -49,6 +49,6 @@ jobs:
 
       # Publish version to public repository
       - name: Publish
-        run: npm publish --tag latest
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
