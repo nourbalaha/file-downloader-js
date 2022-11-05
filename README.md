@@ -12,21 +12,21 @@
 
 File Downloader JS is a simple package that allows you to download a file from the browser
 
-### Install with npm
+## Install with npm
 
 ```sh
 npm install file-downloader-js --save
 ```
 
-### Install with yarn
+## Install with yarn
 
 ```sh
 yarn add file-downloader-js
 ```
 
-### Basic usage
+## Basic usage
 
-#### Binary download using fetch
+### Binary download using fetch
 
 ```js
 import fileDownloader from "file-downloader-js";
@@ -40,7 +40,7 @@ function download(url: string, filename: string) {
 }
 ```
 
-#### Binary download using axios
+### Binary download using axios
 
 ```js
 import fileDownloader from "file-downloader-js";
@@ -55,7 +55,7 @@ function download(url: string, filename: string) {
 }
 ```
 
-#### CSV Data download example
+### CSV Data download example
 
 ```js
 import fileDownloader from "file-downloader-js";
@@ -72,3 +72,13 @@ let bom = new Uint8Array([0xef, 0xbb, 0xbf]);
 
 fileDownloader(data, filename, mime, bom);
 ```
+
+## License
+
+MIT
+
+<div align="center">
+  <p>Made with ❤️ in Tokyo © 2022</p>
+  <p>By Nour Balaha</p>
+  <a href="http://www.nourbalaha.com"><img src="public/logo.png" width="100" height="100" alt="logo" /></a>
+</div>
