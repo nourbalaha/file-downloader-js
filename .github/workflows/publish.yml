@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       release-type:
-        description: 'Release type (one of): patch, minor, major'
+        description: "Release type (one of): <version>, patch, minor, major, premajor, preminor, prepatch, prerelease"
         required: true
-        
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
         run: |
           git config --global user.email ${{ secrets.USER_EMAIL }}
           git config --global user.name ${{ secrets.USER_NAME }}
-          
+
       # Bump package version
       - name: Bump release version
         run: npm version ${{ github.event.inputs.release-type }} -m "new release v%s"
