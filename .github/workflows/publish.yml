@@ -1,4 +1,4 @@
-name: Release package
+name: Publish Package
 on:
   workflow_dispatch:
     inputs:
@@ -19,8 +19,6 @@ jobs:
       # Checkout project repository
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       # Setup Node.js environment
       - name: Setup Node.js
@@ -45,23 +43,12 @@ jobs:
 
       # Bump package version
       - name: Bump release version
-        run: npm version ${{ github.event.inputs.release-type }} -m "new release v%s"
+        run: npm version $RELEASE_TYPE -m "new release v%s"
+        env:
+          RELEASE_TYPE: ${{ github.event.inputs.release-type }}
 
       # Publish version to public repository
       - name: Publish
         run: npm publish --tag latest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
-
-      # Create release
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body_path: "CHANGELOG.md"
-          draft: false
-          prerelease: false
