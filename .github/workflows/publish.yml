@@ -46,7 +46,7 @@ jobs:
       - name: Bump release version
         run: |
           echo "NEW_VERSION<<EOF" >> $GITHUB_ENV
-          $(npm --no-git-tag-version version $RELEASE_TYPE)" >> $GITHUB_ENV
+          npm --no-git-tag-version version $RELEASE_TYPE >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
         env:
           RELEASE_TYPE: ${{ github.event.inputs.release-type }}
