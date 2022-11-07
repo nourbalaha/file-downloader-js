@@ -19,8 +19,6 @@ jobs:
       # Checkout project repository
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
 
       # Setup Node.js environment
       - name: Setup Node.js
@@ -45,10 +43,7 @@ jobs:
 
       # Bump package version
       - name: Bump release version
-        run: |
-          echo "NEW_VERSION<<EOF" >> $GITHUB_ENV
-          npm version $RELEASE_TYPE -m "v%s" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+        run: npm version $RELEASE_TYPE -m "new release v%s"
         env:
           RELEASE_TYPE: ${{ github.event.inputs.release-type }}
 
@@ -57,6 +52,17 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPMJS_ACCESS_TOKEN }}
+
+      # Checkout project repository
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Get the version
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
 
       # Get commit summary
       - name: Get commit summary
@@ -75,8 +81,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.NEW_VERSION }}
-          release_name: Release ${{ env.NEW_VERSION }}
+          tag_name: ${{ steps.get_version.outputs.VERSION }}
+          release_name: Release ${{ steps.get_version.outputs.VERSION }}
           body: |
             ${{ steps.get_commit_summary.outputs.COMMIT_SUMMARY }}
           draft: false
