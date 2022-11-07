@@ -33,9 +33,9 @@
   "author": "Nour Balaha",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nourbalaha/file-download-js/issues"
+    "url": "https://github.com/nourbalaha/file-downloader-js/issues"
   },
-  "homepage": "https://github.com/nourbalaha/file-download-js#readme",
+  "homepage": "https://github.com/nourbalaha/file-downloader-js#readme",
   "devDependencies": {
     "@types/jest": "^29.2.0",
     "@types/node": "^18.11.9",
