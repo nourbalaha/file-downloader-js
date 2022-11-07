@@ -1,0 +1,41 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      release-version:
+        description: "Release version (i.e. v1.0.5)"
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout project repository
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Get commit summary
+      - name: Get commit summary
+        id: get_commit_summary
+        run: |
+          PREVIOUS_TAG=$(git tag --sort=-creatordate | sed -n 2p)
+          echo "PREVIOUS_TAG: $PREVIOUS_TAG"
+          COMMIT_SUMMARY="$(git log --oneline --pretty=tformat:"%h %s" $PREVIOUS_TAG..${{ github.ref }})"
+          COMMIT_SUMMARY="${COMMIT_SUMMARY//$'\n'/'%0A'}"
+          echo ::set-output name=COMMIT_SUMMARY::$COMMIT_SUMMARY
+
+      # Create Release
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.event.inputs.release-version }}
+          release_name: Release ${{ github.event.inputs.release-version }}
+          body: |
+            ${{ steps.get_commit_summary.outputs.COMMIT_SUMMARY }}
+          draft: false
+          prerelease: false
