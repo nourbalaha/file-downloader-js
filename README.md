@@ -73,9 +73,14 @@ let bom = new Uint8Array([0xef, 0xbb, 0xbf]);
 fileDownloader(data, filename, mime, bom);
 ```
 
+## Contribution
+Your contribution is welcome!
+If you find a bug or if you have a suggestion, please fork this repo and make a pull request.
+Thank you!
+
 ## License
 
-MIT
+[MIT License](LICENSE)
 
 <div align="center">
   <p>Made with ❤️ in Tokyo © 2022</p>
