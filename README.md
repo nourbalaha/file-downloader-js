@@ -83,7 +83,7 @@ Thank you!
 [MIT License](LICENSE)
 
 <div align="center">
-  <p>Made with ❤️ in Tokyo © 2022</p>
+  <p>Made with ❤️ in Tokyo © 2024</p>
   <p>By Nour Balaha</p>
   <a href="http://www.nourbalaha.com"><img src="public/logo.png" width="100" height="100" alt="logo" /></a>
 </div>
